@@ -1,6 +1,5 @@
 #include <dpp/dpp.h>
-#include "events/interactionCreate.h"
-#include "events/ready.h"
+#include "events/events.h"
 #include "includes/dotenv.h"
 
 using namespace std;

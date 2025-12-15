@@ -13,6 +13,7 @@ add_executable(DppBot_Learning main.cpp
 add_executable(CommandRegistrator register_commands.cpp
         commands/definitions.h
         includes/dotenv.h
+        events/events.h
 )
 
 target_link_libraries(DppBot_Learning PRIVATE dpp)
