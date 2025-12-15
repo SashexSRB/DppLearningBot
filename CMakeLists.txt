@@ -10,4 +10,10 @@ add_executable(DppBot_Learning main.cpp
         includes/dotenv.h
 )
 
+add_executable(CommandRegistrator register_commands.cpp
+        commands/definitions.h
+        includes/dotenv.h
+)
+
 target_link_libraries(DppBot_Learning PRIVATE dpp)
+target_link_libraries(CommandRegistrator PRIVATE dpp)
