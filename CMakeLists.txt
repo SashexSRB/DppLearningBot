@@ -7,6 +7,7 @@ add_executable(DppBot_Learning main.cpp
         events/interactionCreate.h
         commands/ping.h
         events/ready.h
+        includes/dotenv.h
 )
 
 target_link_libraries(DppBot_Learning PRIVATE dpp)
