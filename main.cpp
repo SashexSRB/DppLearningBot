@@ -1,21 +1,25 @@
 #include <dpp/dpp.h>
 #include "events/interactionCreate.h"
 #include "events/ready.h"
+#include "includes/dotenv.h"
 
-using namespace dpp;
 using namespace std;
 
-const string BOT_TOKEN = "MTQ1MDEwNDczODUwNTgxODIwMw.GejPux.9xoOw7xAx_4pUPGH2TH47rFyfsOXWk6K9GXaec";
-
 int main() {
-    cluster bot(BOT_TOKEN);
+    if (!dotenv::config.load("../.env")) {
+        throw std::runtime_error("Failed to load .env file\n");
+    }
 
-    bot.on_log(utility::cout_logger());
+    const string BOT_TOKEN = dotenv::config.get<string>("TOKEN", "0");
+
+    dpp::cluster bot(BOT_TOKEN);
+
+    bot.on_log(dpp::utility::cout_logger());
 
     setupInteractionCreate(bot);
     setupReady(bot);
 
-    bot.start(st_wait);
+    bot.start(dpp::st_wait);
 
     return 0;
 }
