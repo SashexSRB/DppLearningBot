@@ -1,6 +1,6 @@
 #pragma once
 #include <dpp/dpp.h>
-#include "../commands/ping.h"
+#include "../commands/commands.h"
 
 using namespace std;
 

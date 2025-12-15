@@ -14,6 +14,7 @@ add_executable(CommandRegistrator register_commands.cpp
         commands/definitions.h
         includes/dotenv.h
         events/events.h
+        commands/commands.h
 )
 
 target_link_libraries(DppBot_Learning PRIVATE dpp)
