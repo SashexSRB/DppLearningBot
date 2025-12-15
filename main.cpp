@@ -9,7 +9,7 @@ int main() {
         throw std::runtime_error("Failed to load .env file\n");
     }
 
-    const string BOT_TOKEN = dotenv::config.get<string>("TOKEN", "0");
+    const auto BOT_TOKEN = dotenv::config.get<string>("TOKEN", "0");
 
     dpp::cluster bot(BOT_TOKEN);
 
