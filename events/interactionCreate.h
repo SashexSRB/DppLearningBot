@@ -11,7 +11,6 @@ inline void setupInteractionCreate(dpp::cluster& bot) {
         {"ping", pingCommand},
     };
 
-
     bot.on_slashcommand([](const dpp::slashcommand_t& event) {
         if (const auto it = commands.find(event.command.get_command_name()); it != commands.end()) {
             it->second(event);
