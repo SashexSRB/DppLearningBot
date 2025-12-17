@@ -22,12 +22,20 @@ int main() {
 
         const auto commands = getGlobalCommands(bot.me.id);
 
-        bot.global_bulk_command_create(
-            commands
-        );
+        for (const auto& cmd : commands) {
+           std::cout << "Registering command: " << cmd.name << "\n";
 
-        std::cout << "Done.\n";
-        bot.shutdown();
+           bot.global_command_create(cmd, [&bot, &cmd](const dpp::confirmation_callback_t& callback) {
+               if (callback.is_error()) {
+                   std::cerr << "Failed to register command '" << cmd.name
+                             << "': " << callback.get_error().message << "\n";
+               } else {
+                   std::cout << "Successfully registered command '" << cmd.name << "'\n";
+               }
+
+           });
+       }
+        std::cout << "All registration requests sent. Keep the bot running.\n";
     });
 
     bot.start(dpp::st_wait);

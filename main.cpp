@@ -1,4 +1,5 @@
 #include <dpp/dpp.h>
+#include <mpg123.h>
 #include "events/events.h"
 #include "includes/dotenv.h"
 
@@ -11,7 +12,9 @@ int main() {
 
     const auto BOT_TOKEN = dotenv::config.get<string>("TOKEN", "0");
 
-    dpp::cluster bot(BOT_TOKEN);
+    mpg123_init();
+
+    dpp::cluster bot(BOT_TOKEN, dpp::i_default_intents | dpp::i_guild_voice_states);
 
     bot.on_log(dpp::utility::cout_logger());
 
@@ -19,6 +22,8 @@ int main() {
     setupReady(bot);
 
     bot.start(dpp::st_wait);
+
+    mpg123_exit();
 
     return 0;
 }
